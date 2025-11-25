@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 26% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 24% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 24% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 189 94% 55%;
+    --primary-foreground: 220 26% 8%;
+
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 18% 16%;
+    --muted-foreground: 210 20% 65%;
+
+    --accent: 45 93% 58%;
+    --accent-foreground: 220 26% 8%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+
+    --border: 220 18% 20%;
+    --input: 220 18% 20%;
+    --ring: 189 94% 55%;
+
+    --radius: 0.75rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(189 94% 55%), hsl(220 94% 65%));
+    --gradient-hero: linear-gradient(180deg, hsl(220 26% 8% / 0.95), hsl(220 26% 12%));
+    --glow-primary: 0 0 40px hsl(189 94% 55% / 0.4);
+    --glow-accent: 0 0 30px hsl(45 93% 58% / 0.3);
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Exo 2', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
