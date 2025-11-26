@@ -1,7 +1,7 @@
-import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { FeaturedEvents } from "@/components/FeaturedEvents";
-import { Footer } from "@/components/Footer";
+import { Header } from "@/components/ui/Header";
+import { Hero } from "@/components/ui/Hero";
+import { FeaturedEvents } from "@/components/ui/FeaturedEvents";
+import { Footer } from "@/components/ui/Footer";
 
 const Index = () => {
   return (

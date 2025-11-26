@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +7,8 @@
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
+
+
 
 @layer base {
   :root {
@@ -46,11 +50,6 @@ All colors MUST be HSL.
     --glow-primary: 0 0 40px hsl(189 94% 55% / 0.4);
     --glow-accent: 0 0 30px hsl(45 93% 58% / 0.3);
   }
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap');
-
-@layer base {
   * {
     @apply border-border;
   }
