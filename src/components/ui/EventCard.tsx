@@ -26,6 +26,7 @@ export const EventCard = ({
   live = false,
 }: EventCardProps) => {
   return (
+    <section id="events" className="py-16">
     <Card className="p-4 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 bg-card border-border">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
@@ -88,5 +89,6 @@ export const EventCard = ({
         </div>
       )}
     </Card>
+    </section>
   );
 };

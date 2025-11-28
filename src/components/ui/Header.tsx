@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+/* this imports the trophy and user icons ,but you need to install lucide-react first */
 import { Trophy, User } from "lucide-react";
 
 export const Header = () => {
@@ -7,6 +8,7 @@ export const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
+            {/* here is the trophy icon */}
             <Trophy className="h-8 w-8 text-primary" />
             <span className="text-2xl font-display font-black text-gradient">
               BetPulse
@@ -29,11 +31,13 @@ export const Header = () => {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="sm">
+            <Button className="flex" variant="ghost" size="sm" onClick={() => window.location.href = "/login"}
+              >
               <User className="h-4 w-4 mr-2" />
               Sign In
             </Button>
-            <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold glow-primary">
+            <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold glow-primary" onClick={()=> window.location.href="/register"}
+            >
               Register
             </Button>
           </div>

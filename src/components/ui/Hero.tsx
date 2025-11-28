@@ -3,7 +3,7 @@ import { ArrowRight, TrendingUp } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section className="relative overflow-hidden py-20 md:py-32">
+    <section id="up"className="relative overflow-hidden py-20 md:py-32">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/5" />
       
       <div className="container mx-auto px-4 relative">
@@ -23,13 +23,14 @@ export const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button 
-              size="lg" 
+            <a
+              href="#events"
+              /* size="lg"  */
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-8 glow-primary group"
             >
               Get Started
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            </a>
             <Button 
               size="lg" 
               variant="outline"

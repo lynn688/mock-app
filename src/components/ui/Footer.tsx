@@ -1,8 +1,11 @@
-import { Shield, Lock, Award } from "lucide-react";
+import { Shield, Lock, Award, ArrowUp } from "lucide-react";
 
 export const Footer = () => {
   return (
     <footer className="border-t border-border bg-card/50 backdrop-blur-sm mt-20">
+      <a href="#up"className="flex items-center justify-center text-primary by-primary font-bold text-lg">
+        <ArrowUp/>
+        Back To Top</a>
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div className="flex items-start gap-3">
