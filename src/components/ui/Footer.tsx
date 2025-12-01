@@ -3,7 +3,7 @@ import { Shield, Lock, Award, ArrowUp } from "lucide-react";
 export const Footer = () => {
   return (
     <footer className="border-t border-border bg-card/50 backdrop-blur-sm mt-20">
-      <a href="#up"className="flex items-center justify-center text-primary by-primary font-bold text-lg">
+      <a href="#head"className="flex items-center justify-center text-primary by-primary font-bold text-lg">
         <ArrowUp/>
         Back To Top</a>
       <div className="container mx-auto px-4 py-12">

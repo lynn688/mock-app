@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast,Toaster } from "sonner";
 import { X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 
 export default function Login() {
@@ -93,11 +94,13 @@ export default function Login() {
           >
             {showPassword ? "Hide" : "Show"}
           </button>
+          
         </div>
 
         <button className="w-full bg-primary text-white py-2 rounded font-semibold">
           Login
         </button>
+        <Link to="/forgot-password" className="text-primary">Forget password</Link>
       </form>
     </div>
   );

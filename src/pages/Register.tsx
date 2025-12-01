@@ -99,6 +99,7 @@ export default function Register() {
         <button className="w-full bg-primary text-white py-2 rounded font-semibold">
           Register
         </button>
+        <p>Already have an account ?<a href="/login" className="text-primary">Login</a></p>
       </form>
     </div>
   );

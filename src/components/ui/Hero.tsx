@@ -24,12 +24,12 @@ export const Hero = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="#events"
+              href="/register"
               /* size="lg"  */
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-8 glow-primary group"
             >
               Get Started
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              < ArrowRight  className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <Button 
               size="lg" 
