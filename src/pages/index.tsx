@@ -1,6 +1,7 @@
 import { Header } from "@/components/ui/Header";
 import { Hero } from "@/components/ui/Hero";
 import { Footer } from "@/components/ui/Footer";
+import  BottomNavbar  from "@/components/ui/BottomNavbar";
 
 const Index = () => {
   return (
@@ -10,6 +11,7 @@ const Index = () => {
         <Hero />
       </main>
       <Footer />
+      <BottomNavbar />
     </div>
   );
 };

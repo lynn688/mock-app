@@ -14,7 +14,7 @@ export const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
-    window.location.href = "/"; // redirect to home
+    window.location.href = "/landing"; // redirect to home
   };
 
   return (
@@ -27,7 +27,7 @@ export const Header = () => {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <Trophy className="h-8 w-8 text-primary" />
-            <a href="/"className="text-2xl font-display font-black text-gradient">
+            <a href="/landing"className="text-2xl font-display font-black text-gradient">
               BetPulse
             </a>
           </div>

@@ -3,90 +3,88 @@ import axios from "axios";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import {Header } from "@/components/ui/Header";
+import {Footer } from "@/components/ui/Footer";
+import BottomNavbar from "@/components/ui/BottomNavbar";
 
-interface CasinoGame {
-  id: string | number;
+interface Game {
+  id: string;
   name: string;
   image: string;
-  provider: string;
+  category: string;
 }
 
-export default function Casino() {
-  const [games, setGames] = useState<CasinoGame[]>([]);
+const CasinoPage = () => {
+  const [games, setGames] = useState<Game[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const CASINO_ENDPOINT = "https://casino.crash254.com/games";
-  const PAGE = 1;
-  const PER_PAGE = 50;
-
-  const fetchGames = async () => {
-    try {
-      setLoading(true);
-      const res = await axios.get(CASINO_ENDPOINT, {
-        params: { page: PAGE, per_page: PER_PAGE },
-      });
-
-      console.log("FULL RESPONSE:", res.data);
-
-      if (res.data.data) {
-        setGames(res.data.data);
-      } else {
-        setGames([]);
-        setError("No games found");
-      }
-    } catch (err: any) {
-      console.error(err);
-      setError("Failed to load casino games");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        const response = await axios.get("https://casino.crash254.com/games", {
+          params: { page: 1, per_page: 50 },
+        });
+
+        // Handle different API response formats
+        if (Array.isArray(response.data)) {
+          setGames(response.data);
+        } else if (Array.isArray(response.data.games)) {
+          setGames(response.data.games);
+        } else if (Array.isArray(response.data.data)) {
+          setGames(response.data.data);
+        } else {
+          setError("No games available.");
+          console.error("API returned invalid format:", response.data);
+        }
+      } catch (err: any) {
+        console.error("Failed to fetch games:", err.response || err.message);
+        setError("Failed to load casino games.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchGames();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="p-4 text-center">
-        <Loader2 className="animate-spin mx-auto mb-4" />
-        <p>Loading casino games...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="p-4 text-center text-red-500">
-        <p>{error}</p>
-      </div>
-    );
-  }
-
   return (
-    <div className="p-4">
-      <h1 className="text-primary text-3xl font-bold mb-6"> Casino Games</h1>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {games.map((game) => (
-          <Card key={game.id} className="relative shadow-md hover:shadow-lg transition group overflow-hidden">
-  <img
-    src={game.image}
-    alt={game.name}
-    className="w-full h-40 object-cover "
-  />
+    <div className="flex flex-col min-h-screen">
+      <Header />
 
-  {/* Overlay content */}
-  <div className="absolute inset-0 flex items-center justify-center ">
-     <Button className="opacity-0 hover:opacity-100 w-24 transition-opacity duration-300">Play</Button>
-  </div>
-  <div className="p-3">
-    <h2 className="text-lg font-semibold ">{game.name}</h2>
-    <p className="text-sm text-gray-500">{game.provider}</p></div>
-</Card>
+      <main className="flex-grow p-6">
+        {loading ? (
+          <div className="flex justify-center items-center h-64">
+            <Loader2 className="animate-spin w-12 h-12 text-blue-600" />
+          </div>
+        ) : error ? (
+          <div className="text-center text-red-500">{error}</div>
+        ) : games.length === 0 ? (
+          <div className="text-center text-gray-500">No games available.</div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {games.map((game) => (
+              <Card key={game.id} className="relative overflow-hidden group">
+                <img
+                  src={game.image}
+                  alt={game.name}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex justify-center items-center">
+                  <Button className="px-4 py-2 text-sm">Play</Button>
+                </div>
+                <div className="p-2 text-center font-semibold">{game.name}</div>
+              </Card>
+            ))}
+          </div>
+        )}
+      </main>
 
-        ))}
-      </div>
+      <Footer />
+      <BottomNavbar />
     </div>
   );
-}
+};
+
+export default CasinoPage;
